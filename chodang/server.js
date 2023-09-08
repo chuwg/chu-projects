@@ -28,17 +28,35 @@ app.get('/write', function (require, response) {
     response.sendFile(__dirname + '/write.html');
 });
 
+// 글 작성 기능
+
 app.post('/add', function (require, response) {
     response.send("전송 완료");
-    console.log(require.body.inputName);
-    console.log(require.body.selectOption);
-    console.log(require.body.writeInputPassword);
-    console.log(require.body.writeCheckBox);
-    db.collection('post').insertOne({ 주문자: require.body.inputName, 수량: require.body.selectOption, 패스워드: require.body.writeInputPassword, 주문동의: require.body.writeCheckBox }, function (에러, 결과) {
+    db.collection('counter').findOne({ name: '게시물수량' }, function (error, result) {
+        console.log(result.totalPost)
+        var totalPostCounter = result.totalPost;
+
+        db.collection('post').insertOne({ _id: totalPostCounter + 1, 주문자: require.body.inputName, 수량: require.body.selectOption, 패스워드: require.body.writeInputPassword, 주문동의: require.body.writeCheckBox }, function (error, result) {
+            db.collection('counter').updateOne({ name: '게시물수량' }, { $inc: { totalPost: 1 } }, function (error, result) {
+                if (error) {
+                    return console.log('게시물 수량 에러남');
+                }
+
+            })
+            // operator 연산자 $set -> 바꿀 값 $inc -> 기준값에 더해줄 값
+            if (error) {
+                return console.log('add 오류났음');
+            }
+
+        });
     });
     // post 라는 컬렉션에서 인설트원하면 내가 원하는 코드 하나를 넣을 수 있음.
 });
 
+//글 번호 달기
+
+
+// 글 보기 기능
 
 app.get('/list', function (require, response) {
     db.collection('post').find().toArray(function (error, result) {
@@ -48,3 +66,12 @@ app.get('/list', function (require, response) {
 
 
 });
+
+app.delete('/delete', function (require, response) {
+    console.log(require.body)
+    require.body._id = parseInt(require.body._id);
+    db.collection('post').deleteOne(require.body, function (error, result) {
+        console.log('삭제 완료');
+        response.status(200).send({ message: '성공했습니다!' });
+    })
+})

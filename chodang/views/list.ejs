@@ -33,33 +33,63 @@
         </li>
         <li class="nav-item">
           <a
-            class="nav-link disabled"
-            href="#"
+            class="nav-link"
+            href="/list"
             tabindex="-1"
             aria-disabled="true"
-            >임시1</a
+            >주문 확인</a
           >
         </li>
       </ul>
     </div>
-    <% for (var i=0; i < posts.length; i++) { %>
-    <div>
-      <ul class="list-group">
-        <li class="list-group-item">주문자 : <%= posts[i].주문자 %></li>
-        <li class="list-group-item">수량 : <%= posts[i].수량 %></li>
-        <li class="list-group-item">동의여부 : <%= posts[i].주문동의 %></li>
-      </ul>
-      <br />
-    </div>
-    <% } %>
+    <ul class="list-group ml-2 mr-3">
+      <% for (var i=0; i < posts.length; i++) { %>
+      <p>
+        <li>
+          <p>글 번호 : <%= posts[i]._id %></p>
+          <li class="list-group-item">주문자 : <%= posts[i].주문자 %></li>
+          <li class="list-group-item">수량 : <%= posts[i].수량 %></li>
+          <li class="list-group-item">동의여부 : <%= posts[i].주문동의 %></li>
+          <button
+            class="delete"
+            type="button"
+            class="btn btn-danger"
+            style="width: 100px"
+            data-id="<%= posts[i]._id %>"
+          >
+            삭제
+          </button>
+          </p>
+      </li>
+
+      <% } %>
+    </ul>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+      $('.delete').click(function (e) {
+        var textNumber = e.target.dataset.id;
+        var nowClick = $(this);
+        $.ajax({
+          method: "DELETE",
+          url: "/delete",
+          data: { _id : textNumber },
+        }).done(function(result) {
+          // 페이지를 강제로 새로고침 하기
+          // 삭제 버튼을 누른 <li> 요소 제거 혹은 안보이게 하기
+          console.log('성공했습니다.');
+          nowClick.parent('li').fadeOut();
+          
+
+
+        }).fail(function(){
+
+        });
+      });
+    </script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
