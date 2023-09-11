@@ -1,6 +1,10 @@
 body {
     width:1000px;
 }
+
+container {
+    width:550px;
+}
 .left {
     width:300px;
     height:200px;

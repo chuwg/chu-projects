@@ -1,0 +1,32 @@
+.bg {
+    background-image:url(https://codingapple.com/wp-content/uploads/2019/06/shoes.jpg);
+    margin-top:60px;
+    height: 500px;
+    text-align: center;
+    color:white;
+}
+.bg h1 {
+    padding-top:80px;
+}
+
+.bg p {
+    padding-top: 100px;
+}
+.bg button {
+    width:100px;
+    height:50px;
+    opacity: 80%;
+    border:0px;
+    color:black;
+    background-color: lightgrey;
+    border-radius: 10px;
+}
+
+.text_area {
+    background-color: lightgrey;
+    margin:-100px auto auto auto;
+    width:600px;
+    height:300px;
+    text-align: center;
+    padding-top:50px;
+}
