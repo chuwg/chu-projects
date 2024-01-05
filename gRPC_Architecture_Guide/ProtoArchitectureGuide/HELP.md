@@ -16,6 +16,13 @@ build.gradle <br />
 src/main/proto/파일명.proto
 </div>
 
+### 순서
+<div style="padding: 10px;border: 1px solid yellow;">
+1. ProtoArchitectureGuide <br/>
+2. ServerArchitectureGuide <br/>
+3. ClientArchitectureGuide
+</div>
+
 ### 사용법
 <div style="border:1px solid blue;padding:10px;">
 <p>
