@@ -59,7 +59,7 @@ publishing {
 			version = '0.0.1-SNAPSHOT'
 			from components.java
 			// gRPC server에서 사용하기 위해 publishing을 의존성을 추가할 때
-			// ProtoArchitectureGuide-0.0.1-SNAPSHOT-plain.jar 이런식으로 파일명이 생성된다.
+			// ProtoArchitectureGuide-0.0.1-SNAPSHOT-plain.jar 이런식으로 파일명이 생성됩니다.
 		}
 	}
 }
