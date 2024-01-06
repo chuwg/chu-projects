@@ -1,4 +1,4 @@
-# gRPC Server Architecture
+# gRPC Client Architecture
 
 ### Setting
 <div style="border: 1px solid red;padding:10px;">
@@ -7,16 +7,15 @@ Version : 21 <br />
 JDK : Open JDK 21 <br />
 SpringBoot : 3.2.1 <br />
 Package : Jar <br />
-Dependencies : SpringBoot DevTools
+Dependencies : SpringBoot DevTools, Spring Web
 </div>
 
 ### 사용하는 파일
 <div style="border: 1px solid green;padding:10px;">
 build.gradle <br />
-ProductInfoImpl.java<br />
-ProductInfoServer.java<br />
-ServerArchitectureGuideApplication.java
-
+controller/TestController.java<br />
+service/StubService.java<br />
+ClientArchitectureGuideApplication.java
 </div>
 
 ### 순서
@@ -29,5 +28,5 @@ ServerArchitectureGuideApplication.java
 ### 사용법
 <div style="border:1px solid blue;padding:10px;">
 > gradle tasks build>build 를 사용해서 build 후<br />
-ServerArchitectureGuideApplication 실행합니다.
+ClientArchitectureGuideApplication 실행합니다.
 </div>
