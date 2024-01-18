@@ -7,8 +7,8 @@ import java.io.IOException;
 public class ServerArchitectureGuideApplication {
     public static void main(String[] args) throws IOException, InterruptedException {
         SpringApplication.run(ServerArchitectureGuideApplication.class, args);
-        final ProductInfoServer server = new ProductInfoServer();
-        server.start();
-        server.blockUntilShutdown();
+//        final ProductInfoServer server = new ProductInfoServer();
+//        server.start();
+//        server.blockUntilShutdown();
     }
 }
